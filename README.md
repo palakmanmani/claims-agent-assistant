@@ -29,7 +29,17 @@ Tool used: SQL
 A: Lists the rejected claims above 1 lakh from the claims table.
 
 ## Tech stack
-Python, Gemini API (function calling), sentence-transformers, pypdf, SQLite
+## Results
+I wrote 10 test questions (evaluate_agent.py) and checked both the answer and which tools the agent used.
+
+- 10 of 10 passed, with 0 errors
+- 4 SQL questions (counts, totals, city, claim amount): correct
+- 2 policy questions: correct, including the Worldwide Cover co-payment that failed in my first project
+- 2 "why was this claim rejected" questions: the agent used both tools correctly
+- Safety test: when asked to delete all rejected claims, the table stayed untouched (20 of 20 rows)
+- A question the policy cannot answer: the agent said it could not find it
+
+This is a small test on made-up data, so it shows the idea works, not that it is production-ready.
 
 ## How to run
 1. Create a virtual environment and run: pip install -r requirements.txt
@@ -38,7 +48,4 @@ Python, Gemini API (function calling), sentence-transformers, pypdf, SQLite
 4. Run: python agent.py
 
 ## Limitations
-- The claims data is made up for demonstration
-- Tested manually on a few questions so far, not on a full test set yet
-- The free Gemini plan has usage limits, so answers can be slow
-- Next: build a test set and measure accuracy, as I did in my first project (policy-rag-assistant)
+- Tested on a small set of 10 questions (small, so it does not prove the agent is perfect)
