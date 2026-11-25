@@ -29,6 +29,9 @@ Tool used: SQL
 A: Lists the rejected claims above 1 lakh from the claims table.
 
 ## Tech stack
+
+Python, Gemini API (function calling), sentence-transformers, pypdf, SQLite
+
 ## Results
 I wrote 10 test questions (evaluate_agent.py) and checked both the answer and which tools the agent used.
 
